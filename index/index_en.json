@@ -1,0 +1,148 @@
+[
+  {
+    "id": 1,
+    "name": "Healthy Aging and Elderly Care",
+    "subcategories": [
+      { "id": "1.1", "name": "Smart Elderly Care Technologies" },
+      { "id": "1.2", "name": "Community-Based Elderly Care Models" },
+      { "id": "1.3", "name": "Elderly Nutrition and Lifestyle Interventions" },
+      { "id": "1.4", "name": "Care for Disabled and Dementia Patients" },
+      { "id": "1.5", "name": "Long-Term Care Policy and Management" },
+      { "id": "1.6", "name": "Aged Care Facility and Environmental Design" },
+      { "id": "1.7", "name": "Sociology and Ethics of Aging" },
+      { "id": "1.8", "name": "Intergenerational Relations and Social Participation" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Anti-Aging and Regenerative Medicine",
+    "subcategories": [
+      { "id": "2.1", "name": "Mechanisms of Aging" },
+      { "id": "2.2", "name": "Regenerative Medicine and Tissue Engineering" },
+      { "id": "2.3", "name": "Stem Cell Therapy and Regeneration Strategies" },
+      { "id": "2.4", "name": "Anti-Aging Drugs and Nutraceutical Development" },
+      { "id": "2.5", "name": "Molecular and Cellular Interventions" },
+      { "id": "2.6", "name": "Biological Clocks and Longevity Factor Research" },
+      { "id": "2.7", "name": "Strategies to Extend Healthy Lifespan" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Biomedicine and Precision Medicine",
+    "subcategories": [
+      { "id": "3.1", "name": "Drug Discovery and Target Screening" },
+      { "id": "3.2", "name": "Preclinical Studies and Animal Models" },
+      { "id": "3.3", "name": "Pharmaceutical Formulations and Delivery Systems" },
+      { "id": "3.4", "name": "Clinical Trial Design and Evaluation" },
+      { "id": "3.5", "name": "Biologic Drugs and Vaccine Development" },
+      { "id": "3.6", "name": "Molecular and Companion Diagnostics" },
+      { "id": "3.7", "name": "Precision and Personalized Medicine" },
+      { "id": "3.8", "name": "Bioinformatics and Drug Data Science" },
+      { "id": "3.9", "name": "Immunotherapy and Cell Therapy" },
+      { "id": "3.10", "name": "Drug Regulation and Market Access" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Nutrition and Nutraceuticals",
+    "subcategories": [
+      { "id": "4.1", "name": "Functional Foods and Active Ingredients" },
+      { "id": "4.2", "name": "Clinical Validation and Safety of Supplements" },
+      { "id": "4.3", "name": "Dietary Nutrition and Metabolism" },
+      { "id": "4.4", "name": "Nutritional Interventions for Chronic Diseases" },
+      { "id": "4.5", "name": "Nutritional Support for the Elderly" },
+      { "id": "4.6", "name": "Nutrition for Special Populations" },
+      { "id": "4.7", "name": "Dietary Behavior and Nutrition Education" },
+      { "id": "4.8", "name": "Dietary Supplements and Market Regulation" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Cancer Treatment and Immunotherapy",
+    "subcategories": [
+      { "id": "5.1", "name": "Tumor Biology and Oncogenesis" },
+      { "id": "5.2", "name": "Targeted Therapy and Molecular Drug Development" },
+      { "id": "5.3", "name": "Immunotherapy and Cellular Therapy" },
+      { "id": "5.4", "name": "Radiotherapy and Chemotherapy Innovations" },
+      { "id": "5.5", "name": "Early Detection and Cancer Diagnostics" },
+      { "id": "5.6", "name": "Clinical Trials and Patient Stratification" },
+      { "id": "5.7", "name": "Cancer Vaccines and Prevention" },
+      { "id": "5.8", "name": "Cancer Rehabilitation and Quality of Life" },
+      { "id": "5.9", "name": "Pediatric and Rare Cancers" },
+      { "id": "5.10", "name": "Cancer Big Data and Predictive Modeling" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Rehabilitation Medicine and Assistive Devices",
+    "subcategories": [
+      { "id": "6.1", "name": "Motor Function Rehabilitation" },
+      { "id": "6.2", "name": "Neurological Rehabilitation" },
+      { "id": "6.3", "name": "Smart Rehab Devices and Robotics" },
+      { "id": "6.4", "name": "Prosthetics, Orthotics, and Assistive Technology" },
+      { "id": "6.5", "name": "Assistive Devices for the Elderly" },
+      { "id": "6.6", "name": "Rehabilitation Assessment and Monitoring Systems" },
+      { "id": "6.7", "name": "Multidisciplinary Rehab and Clinical Pathways" },
+      { "id": "6.8", "name": "Virtual and Immersive Rehabilitation Training" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Nursing Science and Social Work",
+    "subcategories": [
+      { "id": "7.1", "name": "Chronic Disease Nursing Models" },
+      { "id": "7.2", "name": "Acute Care and Intensive Nursing" },
+      { "id": "7.3", "name": "Home and Community-Based Nursing Care" },
+      { "id": "7.4", "name": "Geriatric Nursing and Disability Support" },
+      { "id": "7.5", "name": "Nursing Ethics and Culturally Sensitive Care" },
+      { "id": "7.6", "name": "Clinical Nursing Education and Training" },
+      { "id": "7.7", "name": "Medical Social Work and Vulnerable Populations" },
+      { "id": "7.8", "name": "Patient Communication and Compassionate Care" },
+      { "id": "7.9", "name": "Nursing Informatics and Management Systems" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Public Health and Epidemiology",
+    "subcategories": [
+      { "id": "8.1", "name": "Epidemiology and Disease Surveillance" },
+      { "id": "8.2", "name": "Health Policy and System Evaluation" },
+      { "id": "8.3", "name": "Global Health and International Collaboration" },
+      { "id": "8.4", "name": "Health Inequities and Social Determinants" },
+      { "id": "8.5", "name": "Health Economics and Cost-Effectiveness" },
+      { "id": "8.6", "name": "Chronic Disease Prevention and Health Promotion" },
+      { "id": "8.7", "name": "Healthcare Access and System Entry" },
+      { "id": "8.8", "name": "Environmental and Climate-Related Health" },
+      { "id": "8.9", "name": "Public Health Data Science and Big Data" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Digital Health and Health Technologies",
+    "subcategories": [
+      { "id": "9.1", "name": "Telemedicine and Mobile Health" },
+      { "id": "9.2", "name": "Wearable Health Devices and Sensors" },
+      { "id": "9.3", "name": "Medical AI and Diagnostic Support" },
+      { "id": "9.4", "name": "Digital Health Platforms and Patient Management" },
+      { "id": "9.5", "name": "Health Data Interoperability and Standards" },
+      { "id": "9.6", "name": "VR and AR in Healthcare Applications" },
+      { "id": "9.7", "name": "Digital Therapeutics and Behavioral Interventions" },
+      { "id": "9.8", "name": "Healthcare Cybersecurity and Data Privacy" }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Mental Health and Cognitive Disorders",
+    "subcategories": [
+      { "id": "10.1", "name": "Depression and Anxiety Interventions" },
+      { "id": "10.2", "name": "Cognitive Impairment and Dementia Prevention" },
+      { "id": "10.3", "name": "Diagnosis of mental disorders and community support" },
+      { "id": "10.4", "name": "Adolescent mental health" },
+      { "id": "10.5", "name": "Post-traumatic stress and psychological resilience" },
+      { "id": "10.6", "name": "Digital mental health tools" },
+      { "id": "10.7", "name": "Mental health policies and service systems" },
+      { "id": "10.8", "name": "Neuropsychology and brain function research" },
+      { "id": "10.9", "name": "Psychological care and interdisciplinary interventions" }
+    ]
+  }
+]
