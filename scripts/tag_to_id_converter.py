@@ -144,6 +144,11 @@ class TagToIdConverter:
                 processed_profiles = []
                 
                 for profile in source_data.get('cleaned_profiles', []):
+                    # Skip profiles with empty email
+                    if 'email' in profile and (profile['email'] == '' or profile['email'] is None):
+                        print(f"Skipping profile with empty email: {profile.get('full_name', 'Unknown')}")
+                        continue
+                    
                     processed_profile = profile.copy()
                     
                     if 'tag' in profile and profile['tag']:
@@ -160,7 +165,12 @@ class TagToIdConverter:
                     total_processed += 1
                 
                 processed_source['cleaned_profiles'] = processed_profiles
-                processed_data[source_name] = processed_source
+                
+                # Only include source if it has profiles after filtering
+                if len(processed_profiles) > 0:
+                    processed_data[source_name] = processed_source
+                else:
+                    print(f"Skipping {source_name} - no valid profiles after filtering")
             
             # Save processed data
             with open(output_file, 'w', encoding='utf-8') as f:
