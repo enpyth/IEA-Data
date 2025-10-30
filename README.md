@@ -4,8 +4,17 @@ This project converts JSON files to CSV for database data imports.
 
 ## How to use it
 
-1. download json files to ./tag_data
-2. exec 'cd scripts; sh run.sh'
+1. prepare env
+
+    $ pyenv local 3.11.6
+
+2. raw data 
+
+    download json files to ./tag_data
+
+3. exec
+
+    $ cd scripts; sh run.sh
 
 ## Core steps
 
