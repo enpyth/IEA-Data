@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to extract the first EXTRACT_COUNT items from each JSON file in the tag_data directory
+Script to extract the data from each JSON file in the tag_data directory
 and combine them into a single JSON file.
 """
 
@@ -10,14 +10,13 @@ from pathlib import Path
 
 EXTRACT_COUNT = 3
 
-def extract_first_five_items():
+def extract_data(output_file):
     """
     Extract first EXTRACT_COUNT items from each JSON file in tag_data directory
     and combine them into a single JSON file.
     """
     # Define paths
     tag_data_dir = Path("../tag_data")
-    output_file = "combined_first_five.json"
     
     # Check if tag_data directory exists
     if not tag_data_dir.exists():
@@ -79,4 +78,5 @@ def extract_first_five_items():
         print(f"Error writing output file: {e}")
 
 if __name__ == "__main__":
-    extract_first_five_items()
+    output_file = "./output/extracted_data.json"
+    extract_data(output_file)

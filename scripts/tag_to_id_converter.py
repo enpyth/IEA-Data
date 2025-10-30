@@ -140,10 +140,9 @@ class TagToIdConverter:
             for source_name, source_data in data.items():
                 print(f"Processing {source_name}...")
                 
-                processed_source = source_data.copy()
                 processed_profiles = []
                 
-                for profile in source_data.get('cleaned_profiles', []):
+                for profile in source_data.get('profiles', []):
                     # Skip profiles with empty email
                     if 'email' in profile and (profile['email'] == '' or profile['email'] is None):
                         print(f"Skipping profile with empty email: {profile.get('full_name', 'Unknown')}")
@@ -154,17 +153,20 @@ class TagToIdConverter:
                     if 'tag' in profile and profile['tag']:
                         total_with_tags += 1
                         # Convert tags to IDs
-                        processed_profile['tag_ids'] = self.convert_tag_to_ids(profile['tag'])
+                        processed_profile['tags'] = self.convert_tag_to_ids(profile['tag'])
                         # Remove original tag field
                         if 'tag' in processed_profile:
                             del processed_profile['tag']
                     else:
-                        processed_profile['tag_ids'] = []
+                        processed_profile['tags'] = []
                     
                     processed_profiles.append(processed_profile)
                     total_processed += 1
                 
-                processed_source['cleaned_profiles'] = processed_profiles
+                processed_source = {
+                    'total_items': source_data.get('total_items', 0),
+                    'profiles': processed_profiles,
+                }
                 
                 # Only include source if it has profiles after filtering
                 if len(processed_profiles) > 0:
@@ -190,21 +192,16 @@ class TagToIdConverter:
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Convert tag information to tag IDs')
-    parser.add_argument('input_file', help='Input JSON file with researcher data')
-    parser.add_argument('output_file', help='Output JSON file with tag IDs')
-    parser.add_argument('--index-file', default='../index/index_en.json',
-                       help='Index file with category/subcategory mappings (default: ../index/index_en.json)')
-    
-    args = parser.parse_args()
+    input_file = "./output/cleaned_data.json"
+    output_file = "./output/tag_data.json"
+    index_file = "../index/index_en.json"
     
     # Initialize converter
-    converter = TagToIdConverter(args.index_file)
+    converter = TagToIdConverter(index_file)
     
     # Process the data
-    converter.process_researcher_data(args.input_file, args.output_file)
+    converter.process_researcher_data(input_file, output_file)
 
 
 if __name__ == "__main__":
-    # python3 tag_to_id_converter.py ../data/cleaned_researcher_data.json ../data/out.json --index-file ../index/index_en.json
     main()

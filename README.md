@@ -1,11 +1,28 @@
-## extract first n from ./tag_data
+## Data processing tools
 
-$ python3 extract_demo.py
+This project converts JSON files to CSV for database data imports.
 
-## clean data and standardize the structure
- 
-$ python3 clean_data.py
+## How to use it
 
-## convert tag to id
+1. download json files to ./tag_data
+2. exec 'cd scripts; sh run.sh'
 
-$ python3 tag_to_id_converter.py ../data/cleaned_researcher_data.json ../data/out.json --index-file ../index/index_en.json
+## Core steps
+
+1. extract
+
+    extract n item from each ./tag_data/*.json
+    
+2. clean 
+    
+    - standardize all the json to one structure
+    - remove `\n` 
+    - use eamil as orcid if orcid is null
+
+3. convert tag to id 
+
+    read index to map, then convert the text to id
+
+4. export CSV for PostgreSQL insertion
+
+    refer to table strcture of academic_products and tags, convert the taged json to csv.

@@ -26,7 +26,7 @@ def clean_and_standardize_data(input_file: str, output_file: str):
         "org_unit": "",
         "telephone": "",
         "email": "",
-        "brief_introduction": "",
+        "introduction": "",
         "orcid": "",
         "tag": []
     }
@@ -66,11 +66,10 @@ def clean_and_standardize_data(input_file: str, output_file: str):
             return email
         return ""
     
-    def clean_orcid_field(value: Union[str, None]) -> str:
-        """Clean and standardize ORCID field."""
+    def clean_orcid_field(value: Union[str, None], email_value: Union[str, None] = None) -> str:
+        """Clean and standardize ORCID field; if not valid, returns email_value if present."""
         if value is None:
-            return ""
-        
+            value = ""
         orcid = str(value).strip()
         # Extract ORCID ID from URL if present
         if "orcid.org" in orcid:
@@ -79,7 +78,9 @@ def clean_and_standardize_data(input_file: str, output_file: str):
                 return match.group(1)
         elif re.match(r'^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$', orcid):
             return orcid
-        
+        # Not valid orcid: use cleaned email instead if given
+        if email_value:
+            return str(email_value).strip()
         return ""
     
     def clean_tag_field(value: Union[List, None]) -> List[List[str]]:
@@ -99,12 +100,19 @@ def clean_and_standardize_data(input_file: str, output_file: str):
                     cleaned_tags.append([category, subcategories])
         
         return cleaned_tags
+
+    def normalize_university_key(name: str) -> str:
+        """Normalize university key by removing trailing ' tag'."""
+        if not isinstance(name, str):
+            return str(name)
+        # Remove a single trailing ' tag' (with optional preceding whitespace)
+        return re.sub(r"\s+tag$", "", name).strip()
     
     def standardize_researcher_profile(profile: Dict[str, Any]) -> Dict[str, Any]:
         """Standardize a single researcher profile."""
         standardized = standard_fields.copy()
         
-        # Map and clean each field
+        # Map and clean each field (except orcid)
         field_mappings = {
             "website": clean_string_field,
             "full_name": clean_string_field,
@@ -112,15 +120,24 @@ def clean_and_standardize_data(input_file: str, output_file: str):
             "org_unit": clean_string_field,
             "telephone": clean_telephone_field,
             "email": clean_email_field,
-            "brief_introduction": clean_string_field,
-            "orcid": clean_orcid_field,
+            "brief_introduction": clean_string_field,  # source key -> output 'introduction'
             "tag": clean_tag_field
         }
         
         for field, cleaner_func in field_mappings.items():
             if field in profile:
-                standardized[field] = cleaner_func(profile[field])
+                output_field = "introduction" if field == "brief_introduction" else field
+                cleaned_val = cleaner_func(profile[field])
+                if output_field == "introduction":
+                    cleaned_val = cleaned_val.replace("\n", " ")
+                standardized[output_field] = cleaned_val
         
+        # Handle ORCID, substituting email if orcid is blank
+        email_val = standardized.get("email", "")
+        orcid_val = profile.get("orcid", None)
+        cleaned_orcid = clean_orcid_field(orcid_val, email_val)
+        standardized["orcid"] = cleaned_orcid
+
         return standardized
     
     # Read the input file
@@ -144,18 +161,17 @@ def clean_and_standardize_data(input_file: str, output_file: str):
             continue
         
         university_cleaned = {
-            "source_file": university_data.get("source_file", ""),
             "total_items": university_data.get("total_items", 0),
-            "cleaned_profiles": []
+            "profiles": []
         }
         
         for profile in university_data["extracted_items"]:
             total_profiles += 1
             cleaned_profile = standardize_researcher_profile(profile)
-            university_cleaned["cleaned_profiles"].append(cleaned_profile)
+            university_cleaned["profiles"].append(cleaned_profile)
             cleaned_profiles += 1
         
-        cleaned_data[university_key] = university_cleaned
+        cleaned_data[normalize_university_key(university_key)] = university_cleaned
     
     # Write the cleaned data
     try:
@@ -172,10 +188,10 @@ def clean_and_standardize_data(input_file: str, output_file: str):
         # Show sample of cleaned data
         if cleaned_data:
             first_university = list(cleaned_data.keys())[0]
-            first_profile = cleaned_data[first_university]["cleaned_profiles"][0]
+            first_profile = cleaned_data[first_university]["profiles"][0]
             print(f"\n📋 Sample cleaned profile from {first_university}:")
             for field, value in first_profile.items():
-                if field == "brief_introduction":
+                if field == "introduction":
                     preview = value[:100] + "..." if len(value) > 100 else value
                     print(f"   {field}: {preview}")
                 elif field == "tag":
@@ -188,8 +204,8 @@ def clean_and_standardize_data(input_file: str, output_file: str):
 
 def main():
     """Main function to run the data cleaning process."""
-    input_file = "combined_first_five.json"
-    output_file = "cleaned_researcher_data.json"
+    input_file = "./output/extracted_data.json"
+    output_file = "./output/cleaned_data.json"
     
     # Check if input file exists
     if not Path(input_file).exists():
