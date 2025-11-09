@@ -9,6 +9,7 @@ Outputs:
 Notes:
   - Skips profiles without a non-empty ORCID (required by schema).
   - "profiles" JSON excludes 'orcid', 'introduction', and 'tags'.
+  - Adds 'organization' field to profiles JSON with the university name from tag_data.json key.
   - Subcategory IDs like "8.2" are converted to integer 2; use with tag_id for uniqueness.
 """
 
@@ -36,12 +37,15 @@ def extract_orcid(profile: Dict[str, Any]) -> str:
     return str(value).strip()
 
 
-def build_profiles_json(profile: Dict[str, Any]) -> Dict[str, Any]:
+def build_profiles_json(profile: Dict[str, Any], organization: str = "") -> Dict[str, Any]:
     profiles_obj = {}
     for key, value in profile.items():
         if key in {"orcid", "introduction", "tags"}:
             continue
         profiles_obj[key] = value
+    # Add organization field
+    if organization:
+        profiles_obj["organization"] = organization
     return profiles_obj
 
 
@@ -75,7 +79,7 @@ def process(input_path: str, products_csv: str, tags_csv: str) -> None:
         products_writer.writerow(["orcid", "profiles", "introduction"])
         tags_writer.writerow(["orcid", "tag_id", "sub_id"])
 
-        for _source_name, source_data in data.items():
+        for source_name, source_data in data.items():
             profiles: List[Dict[str, Any]] = source_data.get("profiles", [])
             for profile in profiles:
                 orcid = extract_orcid(profile)
@@ -84,7 +88,7 @@ def process(input_path: str, products_csv: str, tags_csv: str) -> None:
                     continue
 
                 introduction = profile.get("introduction", "")
-                profiles_json = build_profiles_json(profile)
+                profiles_json = build_profiles_json(profile, organization=source_name)
                 profiles_str = json.dumps(profiles_json, ensure_ascii=False, separators=(",", ":"))
 
                 # Write academic_products row

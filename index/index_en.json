@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Healthy Aging and Elderly Care",
-    "subcategories": [
+    "sub_id": [
       { "id": "1.1", "name": "Smart Elderly Care Technologies" },
       { "id": "1.2", "name": "Community-Based Elderly Care Models" },
       { "id": "1.3", "name": "Elderly Nutrition and Lifestyle Interventions" },
@@ -16,7 +16,7 @@
   {
     "id": 2,
     "name": "Anti-Aging and Regenerative Medicine",
-    "subcategories": [
+    "sub_id": [
       { "id": "2.1", "name": "Mechanisms of Aging" },
       { "id": "2.2", "name": "Regenerative Medicine and Tissue Engineering" },
       { "id": "2.3", "name": "Stem Cell Therapy and Regeneration Strategies" },
@@ -29,7 +29,7 @@
   {
     "id": 3,
     "name": "Biomedicine and Precision Medicine",
-    "subcategories": [
+    "sub_id": [
       { "id": "3.1", "name": "Drug Discovery and Target Screening" },
       { "id": "3.2", "name": "Preclinical Studies and Animal Models" },
       { "id": "3.3", "name": "Pharmaceutical Formulations and Delivery Systems" },
@@ -45,7 +45,7 @@
   {
     "id": 4,
     "name": "Nutrition and Nutraceuticals",
-    "subcategories": [
+    "sub_id": [
       { "id": "4.1", "name": "Functional Foods and Active Ingredients" },
       { "id": "4.2", "name": "Clinical Validation and Safety of Supplements" },
       { "id": "4.3", "name": "Dietary Nutrition and Metabolism" },
@@ -59,7 +59,7 @@
   {
     "id": 5,
     "name": "Cancer Treatment and Immunotherapy",
-    "subcategories": [
+    "sub_id": [
       { "id": "5.1", "name": "Tumor Biology and Oncogenesis" },
       { "id": "5.2", "name": "Targeted Therapy and Molecular Drug Development" },
       { "id": "5.3", "name": "Immunotherapy and Cellular Therapy" },
@@ -75,7 +75,7 @@
   {
     "id": 6,
     "name": "Rehabilitation Medicine and Assistive Devices",
-    "subcategories": [
+    "sub_id": [
       { "id": "6.1", "name": "Motor Function Rehabilitation" },
       { "id": "6.2", "name": "Neurological Rehabilitation" },
       { "id": "6.3", "name": "Smart Rehab Devices and Robotics" },
@@ -89,7 +89,7 @@
   {
     "id": 7,
     "name": "Nursing Science and Social Work",
-    "subcategories": [
+    "sub_id": [
       { "id": "7.1", "name": "Chronic Disease Nursing Models" },
       { "id": "7.2", "name": "Acute Care and Intensive Nursing" },
       { "id": "7.3", "name": "Home and Community-Based Nursing Care" },
@@ -104,7 +104,7 @@
   {
     "id": 8,
     "name": "Public Health and Epidemiology",
-    "subcategories": [
+    "sub_id": [
       { "id": "8.1", "name": "Epidemiology and Disease Surveillance" },
       { "id": "8.2", "name": "Health Policy and System Evaluation" },
       { "id": "8.3", "name": "Global Health and International Collaboration" },
@@ -119,7 +119,7 @@
   {
     "id": 9,
     "name": "Digital Health and Health Technologies",
-    "subcategories": [
+    "sub_id": [
       { "id": "9.1", "name": "Telemedicine and Mobile Health" },
       { "id": "9.2", "name": "Wearable Health Devices and Sensors" },
       { "id": "9.3", "name": "Medical AI and Diagnostic Support" },
@@ -133,7 +133,7 @@
   {
     "id": 10,
     "name": "Mental Health and Cognitive Disorders",
-    "subcategories": [
+    "sub_id": [
       { "id": "10.1", "name": "Depression and Anxiety Interventions" },
       { "id": "10.2", "name": "Cognitive Impairment and Dementia Prevention" },
       { "id": "10.3", "name": "Diagnosis of mental disorders and community support" },

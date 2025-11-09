@@ -41,7 +41,7 @@ class TagToIdConverter:
                 self.category_map[category_name] = category_id
                 
                 # Build subcategory mapping
-                for subcategory in category['subcategories']:
+                for subcategory in category['sub_id']:
                     subcategory_name = subcategory['name']
                     subcategory_id = subcategory['id']
                     self.subcategory_map[subcategory_name] = subcategory_id

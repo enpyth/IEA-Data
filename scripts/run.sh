@@ -1,4 +1,4 @@
-rm -rf output
+mv output output_$(date +%Y%m%d%H%M%S)
 mkdir output
 
 # extract ./tag_data/*.json, save to ./output/extracted_data.json
